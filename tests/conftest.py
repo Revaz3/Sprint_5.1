@@ -8,3 +8,6 @@ def driver():
     browser.get('https://stellarburgers.nomoreparties.site')
     yield browser
     browser.quit()
+
+def email():
+    email = 'revaz.mustoyan@yandex.ru'

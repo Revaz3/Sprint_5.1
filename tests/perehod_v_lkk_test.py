@@ -1,23 +1,17 @@
-import time
 from selenium.webdriver.common.by import By
-from selenium import webdriver
+from selenium.webdriver.support.wait import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+from tests.constants import Constants
+import time
 
 class Test_perehod_v_lk:
     def test_perehod_v_lk(seld, driver):
-        email = 'revaz.mustoyan@yandex.ru'
-        password = '1234567'
-        driver.find_element(By.XPATH, "//*[@id='root']/div/header/nav/a/p").click()  # Клик по кнопке Личный кабинет
+        driver.find_element(By.XPATH, "//a[@href='/account']").click()  # Клик по кнопке Личный кабинет
+        driver.find_element(By.XPATH, '//input[@name="name"]').send_keys(Constants.EMAIL)
+        driver.find_element(By.XPATH, '//input[@name="Пароль"]').send_keys(Constants.PASSWORD)
+        driver.find_element(By.XPATH, '//button[@class="button_button__33qZ0 button_button_type_primary__1O7Bx button_button_size_medium__3zxIa"]').click()  # Клик по кнопке Войти
         time.sleep(1)
-        driver.find_element(By.XPATH, '//*[@id="root"]/div/main/div/form/fieldset[1]/div/div/input').send_keys(email)
-        time.sleep(1)
-        driver.find_element(By.XPATH, '//*[@id="root"]/div/main/div/form/fieldset[2]/div/div/input').send_keys(password)
-        time.sleep(1)
-        driver.find_element(By.XPATH, "//*[@id='root']/div/main/div/form/button").click()#Клик по кнопке Войти
-        time.sleep(1)
-        driver.find_element(By.XPATH, "//*[@id='root']/div/header/nav/a/p").click()  # Клик по кнопке Личный кабинет
-        time.sleep(1)
+        driver.find_element(By.XPATH, "//a[@href='/account']").click()  # Клик по кнопке Личный кабинет
 
-        time.sleep(1)
-        profile_text = driver.find_element(By.XPATH, "//*[@id='root']/div/main/div/nav/ul/li[1]/a")  # Проверяем что на странице есть слово Профиль
-        value_profile_text = profile_text.text
-        assert value_profile_text == 'Профиль'
+        button = WebDriverWait(driver, 10).until(EC.visibility_of_element_located((By.XPATH, "//a[@href= '/account/profile']"))).text
+        assert button == 'Профиль'
