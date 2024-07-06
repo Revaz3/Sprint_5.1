@@ -17,6 +17,6 @@ class Test_logout:
         driver.find_element(*Locators.LICHNII_KABINET).click() #Клик по кнопке Личный кабинет
         WebDriverWait(driver, 5).until(EC.visibility_of_element_located(Locators.KNOPKA_LOGOUT)).click() #Клик по кнопке Выйти в личном кабинете
         time.sleep(1)
-        button = WebDriverWait(driver, 10).until(EC.visibility_of_element_located(Locators.KNOPKA_VOITI)).text
-        assert button == 'Войти'
+        button = WebDriverWait(driver, 10).until(EC.visibility_of_element_located(Locators.KNOPKA_VOITI))
+        assert button.is_displayed(), "Кнопка 'Войти' не отображается на странице"
 

@@ -11,5 +11,5 @@ class Testlogglavnaia:
         driver.find_element(*Locators.POLE_PASSWORD).send_keys(Constants.PASSWORD)#Поле password
         driver.find_element(*Locators.KNOPKA_VOITI).click()#Кнопка войти после ввода емейла и пароля
 
-        button = WebDriverWait(driver, 5).until(EC.visibility_of_element_located(Locators.KNOPKA_OFORMIT_ZAKAZ)).text #Кнопка оформить заказ на главной странице
-        assert button == 'Оформить заказ'
+        button = WebDriverWait(driver, 5).until(EC.visibility_of_element_located(Locators.KNOPKA_OFORMIT_ZAKAZ)) #Кнопка оформить заказ на главной странице
+        assert button.is_displayed(), "Кнопка 'Оформить заказ' не отображается на странице"

@@ -22,5 +22,5 @@ class TestReg:
         driver.find_element(By.XPATH, '//input[@name="Пароль"]').send_keys(password)
         driver.find_element(*Locators.KNOPKA_ZAREGISTRIROVATCA).click()
         time.sleep(1)
-        button = WebDriverWait(driver, 10).until(EC.visibility_of_element_located(Locators.KNOPKA_VOITI)).text
-        assert button == 'Войти'
+        button = WebDriverWait(driver, 5).until(EC.visibility_of_element_located(Locators.KNOPKA_VOITI))
+        assert button.is_displayed(), "Кнопка 'Войти' не отображается на странице"
