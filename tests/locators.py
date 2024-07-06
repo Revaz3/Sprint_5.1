@@ -22,3 +22,6 @@ class Locators:
     VKLADKA_SOUSE = (By.CSS_SELECTOR, "div > main > section.BurgerIngredients_ingredients__1N8v2 > div:nth-child(2) > div:nth-child(2)") #Вкладка соусы
     VKLADKA_BULKI = (By.CSS_SELECTOR, "div > main > section.BurgerIngredients_ingredients__1N8v2 > div:nth-child(2) > div:nth-child(1)") #Вкладка булки
     VKLADKA_NACHINKI = (By.CSS_SELECTOR, "div > main > section.BurgerIngredients_ingredients__1N8v2 > div:nth-child(2) > div:nth-child(3)") #Вкладка начинки
+    AKTIVNAIA_VKLADKA_BULKI = (By.XPATH, "//div[@class='tab_tab__1SPyG tab_tab_type_current__2BEPc pt-4 pr-10 pb-4 pl-10 noselect']")  #Активная вкладка булки
+    AKTIVNAIA_VKLADKA_NACHINKI = (By.XPATH, "//div[@class='tab_tab__1SPyG tab_tab_type_current__2BEPc pt-4 pr-10 pb-4 pl-10 noselect']") #Активная вкладка начинки
+    AKTIVNAIA_VKLADKA_SOUSE = (By.XPATH, "//div[@class='tab_tab__1SPyG tab_tab_type_current__2BEPc pt-4 pr-10 pb-4 pl-10 noselect']") #Активнаяя вкладка соусы

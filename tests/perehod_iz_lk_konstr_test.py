@@ -7,7 +7,7 @@ from tests.locators import Locators
 
 
 class Testperehod_lk_konstr:
-    def test_perehod_iz_lk_v_konstruktor(seld, driver):
+    def test_perehod_iz_lk_v_konstruktor(self, driver):
         driver.find_element(*Locators.LICHNII_KABINET).click() #Клик по кнопке Личный кабинет
         driver.find_element(*Locators.POLE_EMAIL).send_keys(Constants.EMAIL)  # Поле email
         driver.find_element(*Locators.POLE_PASSWORD).send_keys(Constants.PASSWORD)  # Поле password
