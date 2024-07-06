@@ -1,12 +1,12 @@
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-
+from tests.locators import Locators
 
 class Test_perehod_bulki:
     def test_perehod_bulki(self, driver):
-        WebDriverWait(driver, 10).until(EC.visibility_of_element_located((By.CSS_SELECTOR, "div > main > section.BurgerIngredients_ingredients__1N8v2 > div:nth-child(2) > div:nth-child(2)"))).click()
-        WebDriverWait(driver, 10).until(EC.visibility_of_element_located((By.CSS_SELECTOR, "div > main > section.BurgerIngredients_ingredients__1N8v2 > div:nth-child(2) > div:nth-child(1)"))).click()  # Клик по кнопке Булки
+        WebDriverWait(driver, 10).until(EC.visibility_of_element_located(Locators.VKLADKA_SOUSE)).click()
+        WebDriverWait(driver, 10).until(EC.visibility_of_element_located(Locators.VKLADKA_BULKI)).click()  # Клик по кнопке Булки
 
         active_tab_class = driver.find_element(By.XPATH, "//div[@class='tab_tab__1SPyG tab_tab_type_current__2BEPc pt-4 pr-10 pb-4 pl-10 noselect']").get_attribute('class')
         assert "tab_tab__1SPyG tab_tab_type_current__2BEPc pt-4 pr-10 pb-4 pl-10 noselect" in active_tab_class

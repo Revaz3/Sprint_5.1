@@ -3,17 +3,16 @@ from selenium.webdriver.common.by import By
 from selenium import webdriver
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-
+from tests.locators import Locators
 from tests.constants import Constants
 
 
 class Testlogshapka:
     def test_login_shapka(self, driver):
+        driver.find_element(*Locators.LICHNII_KABINET).click() #кнопка Личный кабинет шапка сайта
+        driver.find_element(*Locators.POLE_EMAIL).send_keys(Constants.EMAIL)  # Поле email
+        driver.find_element(*Locators.POLE_PASSWORD).send_keys(Constants.PASSWORD)  # Поле password
+        driver.find_element(*Locators.KNOPKA_VOITI).click()  # Кнопка войти после ввода емейла и пароля
 
-        driver.find_element(By.XPATH, '//a[@href="/account"]').click() #Войти в аккаунт
-        driver.find_element(By.XPATH, '//input[@name="name"]').send_keys(Constants.EMAIL)
-        driver.find_element(By.XPATH, '//input[@name="Пароль"]').send_keys(Constants.PASSWORD)
-        driver.find_element(By.XPATH, '//button[@class="button_button__33qZ0 button_button_type_primary__1O7Bx button_button_size_medium__3zxIa"]').click() # Клик по кнопке Войти
-
-        button = WebDriverWait(driver, 5).until(EC.visibility_of_element_located((By.XPATH, '//button[@class="button_button__33qZ0 button_button_type_primary__1O7Bx button_button_size_large__G21Vg"]'))).text
+        button = WebDriverWait(driver, 5).until(EC.visibility_of_element_located(Locators.KNOPKA_OFORMIT_ZAKAZ)).text #Кнопка оформить заказ на главной странице
         assert button == 'Оформить заказ'
